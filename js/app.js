@@ -23,3 +23,5 @@ const displayCategories = categories =>{
 
 
 loadCategories();
+
+
