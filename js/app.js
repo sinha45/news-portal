@@ -1,25 +1,38 @@
-const loadCategories = async() => {
+const loadCategories = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     const res = await fetch(url);
     const data = await res.json();
-    
+
     displayCategories(data.data.news_category);
-   
+
 }
 
-const displayCategories = categories =>{
+const displayCategories = categories => {
     const categoryContainer = document.getElementById('category-container');
-    categories.forEach(category =>{
+    categories.forEach(category => {
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('cat-btn')
-        categoryDiv.innerHTML =`
+        categoryDiv.innerHTML = `
             <button type="button" class="m-4 p-3 border-0 bg-transparent"><span class="text-secondary fw-semibold">${category.category_name}</span> </button>
         `;
-        
+
 
         categoryContainer.appendChild(categoryDiv);
     });
+    // stop loader
+    toggleSpinner(false);
+
 };
+// start loader
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d - none');
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
+}
 
 
 loadCategories();
