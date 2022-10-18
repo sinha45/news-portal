@@ -49,7 +49,6 @@ const loadNews = async () => {
 
     const res = await fetch(url)
     const data = await res.json()
-    console.log(data.data);
     displayNews(data.data)
     // console.log(newsUrl);
 }
@@ -75,9 +74,10 @@ const displayNews = news => {
                 <h5 class="mx-3 mt-4">${singleNews.author.name}</h5>
               <h5 class="mx-5 mt-4 m">view: ${singleNews.total_view}</h5>
               <div class="mt-4">
-              <button onclick="displayNews('${singleNews.details}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
-              Read more
-             </button>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
+  read more
+</button>
+
               </div>
               </div>
               
